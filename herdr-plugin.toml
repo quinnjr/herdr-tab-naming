@@ -1,0 +1,73 @@
+id = "quinnjr.tab-naming"
+name = "Tab Naming"
+version = "0.1.0"
+min_herdr_version = "0.8.0"
+description = "Keep tab labels in sync with the repo and ticket each pane is working in. Rust."
+platforms = ["linux", "macos"]
+
+[[startup]]
+command = ["./herdr-tab-naming", "startup"]
+
+[[events]]
+on = "tab.created"
+command = ["./herdr-tab-naming", "event"]
+
+[[events]]
+on = "tab.moved"
+command = ["./herdr-tab-naming", "event"]
+
+[[events]]
+on = "pane.created"
+command = ["./herdr-tab-naming", "event"]
+
+[[events]]
+on = "pane.exited"
+command = ["./herdr-tab-naming", "event"]
+
+[[events]]
+on = "pane.agent_detected"
+command = ["./herdr-tab-naming", "event"]
+
+[[events]]
+on = "workspace.focused"
+command = ["./herdr-tab-naming", "event"]
+
+[[events]]
+on = "worktree.opened"
+command = ["./herdr-tab-naming", "event"]
+
+[[actions]]
+id = "sync"
+title = "Tab Naming: sync now"
+contexts = ["global"]
+command = ["./herdr-tab-naming", "sync"]
+
+[[actions]]
+id = "force-sync"
+title = "Tab Naming: re-adopt all tabs"
+contexts = ["global"]
+command = ["./herdr-tab-naming", "force-sync"]
+
+[[actions]]
+id = "status"
+title = "Tab Naming: status"
+contexts = ["global"]
+command = ["./herdr-tab-naming", "status"]
+
+[[actions]]
+id = "restart"
+title = "Tab Naming: restart watcher"
+contexts = ["global"]
+command = ["./herdr-tab-naming", "restart"]
+
+[[actions]]
+id = "stop"
+title = "Tab Naming: stop watcher"
+contexts = ["global"]
+command = ["./herdr-tab-naming", "stop"]
+
+[[build]]
+command = ["cargo", "build", "--release", "--locked"]
+
+[[build]]
+command = ["cp", "target/release/herdr-tab-naming", "herdr-tab-naming"]
