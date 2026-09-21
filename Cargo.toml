@@ -1,0 +1,25 @@
+[package]
+name = "herdr-tab-naming"
+version = "0.1.0"
+edition = "2021"
+description = "Keep Herdr tab labels in sync with the repo and ticket each pane is working in"
+license = "MIT"
+repository = "https://github.com/quinnjr/herdr-tab-naming"
+readme = "README.md"
+keywords = ["herdr", "tabs", "labels", "plugin", "git"]
+categories = ["command-line-utilities"]
+
+[[bin]]
+name = "herdr-tab-naming"
+path = "src/main.rs"
+
+[dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+[dev-dependencies]
+tempfile = "3"
+
+[profile.release]
+lto = true
+strip = true
